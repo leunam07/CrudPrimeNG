@@ -30,9 +30,9 @@ export class ListComponent implements OnInit {
 
   getItems(){
     this.itemService.getItems().subscribe( 
-      (resp:any) => this.items = resp.result.items.map( i => new Item(i._about, i.accessURL, i.title)),
+      (resp:any) => this.items = resp.map( i => new Item(i._about, i.accessURL, i.title)),
       (err) => console.log(err),
-    );
+    )
   }
 
   initCols(){
