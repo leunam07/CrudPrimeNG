@@ -1,0 +1,44 @@
+<p-panel header="Items Panel">
+  <app-navbar 
+    [display]="displayDialog" 
+    [title]="titleDialog"
+    [itemFromList]="item"
+    (changeDisplay)="displayDialog = $event"
+    (changeTitle)="titleDialog = $event"
+    (noItemSelected)="verifyItem($event)"
+    (deleteItem)="deleteItem($event)"
+  ></app-navbar>
+  <p-toast></p-toast>
+  <p-table
+    [value]="items"
+    [paginator]="true"
+    [columns]="cols"
+    [rows]="5"
+    selectionMode="single"
+    [(selection)]="item"
+    dataKey="title"
+    styleClass="p-datatable-striped p-datatable-responsive-demo"
+  >
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+            {{ col.header }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item let-columns="columns">
+      <tr [pSelectableRow]="item">
+        <td *ngFor="let col of columns">
+            {{ item[col.field] }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <app-dialog 
+    [display]="displayDialog"
+    [title]="titleDialog"
+    [itemFromList]="item"
+    (changeDisplay)="displayDialog = $event"
+    (addItem)="saveItem($event)"
+  ></app-dialog>
+</p-panel>

@@ -1,0 +1,13 @@
+.dialog-demo {
+    width: 50vw;
+}
+
+.p-button-outlined{
+    width: 100%;
+}
+
+@media screen and (max-width: 40em) {
+    .dialog-demo {
+        width: 90vw;
+    }
+}
